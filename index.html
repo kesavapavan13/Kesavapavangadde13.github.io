@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KesavaPavan | Home</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* TYPING ANIMATION CSS */
+        .typing-text {
+            font-size: 25px;
+            font-weight: 500;
+            margin-top: 10px;
+            color: white;
+        }
+
+        #typing {
+            color: #1e90ff;
+            border-right: 3px solid #1e90ff;
+            padding-right: 6px;
+            animation: cursorBlink 0.7s infinite;
+        }
+
+        @keyframes cursorBlink {
+            50% { border-color: transparent; }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- PARTICLES BACKGROUND -->
+<div id="particles-js"></div>
+
+<!-- NAVBAR -->
+<header>
+    <nav>
+        <h2 class="logo">KesavaPavan</h2>
+        <ul>
+            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="internship.html">Internship</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <h1>Hi, I'm <span>KesavaPavan Gadde</span></h1>
+
+    <!-- TYPING ANIMATION TEXT -->
+    <h2 class="typing-text">
+        <span id="typing"></span>
+    </h2>
+
+    <a href="about.html" class="btn">About Me</a>
+</section>
+
+<!-- PARTICLE JS -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<script>
+    particlesJS("particles-js", {
+        "particles": {
+            "number": { "value": 80 },
+            "size": { "value": 3 },
+            "move": { "speed": 2 },
+            "line_linked": { "enable": true, "distance": 140 },
+            "color": { "value": "#ffffff" }
+        }
+    });
+</script>
+
+<!-- TYPING ANIMATION SCRIPT -->
+<script>
+    const textList = [
+        "Aspiring Data Analyst",
+        "Data Scientist Enthusiast",
+        "Python Developer",
+        "SQL Developer"
+    ];
+
+    let index = 0;
+    let charIndex = 0;
+    let currentText = "";
+    let isDeleting = false;
+
+    function typeEffect() {
+        currentText = textList[index];
+
+        if (!isDeleting) {
+            document.getElementById("typing").innerHTML = currentText.substring(0, charIndex++);
+        } else {
+            document.getElementById("typing").innerHTML = currentText.substring(0, charIndex--);
+        }
+
+        if (charIndex === currentText.length + 1) {
+            isDeleting = true;
+            setTimeout(typeEffect, 1000);
+            return;
+        }
+
+        if (charIndex === 0 && isDeleting) {
+            isDeleting = false;
+            index = (index + 1) % textList.length;
+        }
+
+        setTimeout(typeEffect, isDeleting ? 60 : 120);
+    }
+
+    typeEffect();
+</script>
+
+</body>
+</html>
