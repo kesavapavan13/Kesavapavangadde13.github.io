@@ -166,7 +166,7 @@ nav ul li a.active {
 
 /* IMAGE CONTAINER */
 .about-img {
-    width: 260px;          /* Correct size */
+    width: 260px;    
     height: 360px;
     flex-shrink: 0;
     overflow: hidden;
@@ -177,7 +177,7 @@ nav ul li a.active {
 .about-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover;     /* ✅ Correct value */
+    object-fit: cover;
     object-position: center;
     border: 2px solid rgba(255,255,255,0.8);
 }
@@ -186,12 +186,15 @@ nav ul li a.active {
 .about-text h2 {
     font-size: 28px;
     margin-bottom: 15px;
+    font-style: italic;
+    color: #1e90ff;
 }
 
 .about-text p {
-    font-size: 17px;
+    font-size: 18px;
     line-height: 1.7;
     color: #cfcfcf;
+    font-style: normal;
 }
 
 /* ============================== */
@@ -257,6 +260,14 @@ nav ul li a.active {
     color: #d0d0d0;
 }
 
+.internship-card p strong {
+    color: skyblue;
+}
+
+.internship-card ul li strong {
+    color: skyblue;
+}
+
 .internship-card ul {
     margin-top: 25px;
     padding-left: 25px;
@@ -268,7 +279,6 @@ nav ul li a.active {
     color: #cfcfcf;
     margin-bottom: 14px;
 }
-
 /* ============================== */
 /* PROJECTS (GRID VIEW) */
 /* ============================== */
@@ -279,10 +289,10 @@ nav ul li a.active {
 }
 
 .project-grid {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* ✅ EXACTLY 3 PER ROW */
     gap: 40px;
 }
 
@@ -291,7 +301,8 @@ nav ul li a.active {
     position: relative;
     border-radius: 20px;
     overflow: hidden;
-    height: 280px; /* ✅ NORMAL HEIGHT */
+    height: 280px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 /* CLICKABLE AREA */
@@ -309,9 +320,14 @@ nav ul li a.active {
     transition: transform 0.5s ease;
 }
 
-/* HOVER ZOOM */
+/* HOVER EFFECT */
 .project-card:hover img {
     transform: scale(1.08);
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
 
 /* PROJECT TITLE */
@@ -326,8 +342,8 @@ nav ul li a.active {
     font-size: 18px;
     font-weight: 600;
     color: #fff;
+    backdrop-filter: blur(4px);
 }
-
 
 /* ============================== */
 /* PROJECT MODAL */
@@ -380,7 +396,13 @@ nav ul li a.active {
 /* GITHUB LINK */
 .modal-box h2 a {
     color: #1e90ff;
-    text-decoration: none;
+    text-decoration:underline ;
+}
+
+.modal-box a {
+    color: skyblue;
+    text-decoration: underline;
+
 }
 
 .modal-box h2 a:hover {
@@ -586,96 +608,86 @@ nav ul li a.active {
 
 
 
+/* ===============================
+   RESUME SECTION
+================================= */
 
-/* ============================== */
-/* RESUME */
-/* ============================== */
 .resume-section {
-    padding: 160px 60px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0b1220;
+    padding: 60px 20px;
     text-align: center;
 }
 
-.resume-btn {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 15px 40px;
-    background: var(--primary);
-    border-radius: 12px;
-    color: white;
+.resume-content {
+    max-width: 800px;
+    width: 100%;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #9ca3af;
+    margin-bottom: 50px;
+}
+
+
+.resume-title {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+/* Buttons */
+.resume-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    padding: 12px 26px;
+    border-radius: 8px;
     text-decoration: none;
-    font-size: 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: 0.3s ease;
 }
 
-/* ============================== */
-/* ANIMATION */
-/* ============================== */
-.animate-page {
-    opacity: 0;
-    transform: translateY(40px);
-    animation: fadeUp 0.8s ease forwards;
+.view-btn {
+    background: #38bdf8;   
+    color: #ffffff;
+    border: none;
+    margin: 5px;
 }
 
-@keyframes fadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.view-btn:hover {
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4); 
+    transform: translateY(-3px);
 }
 
-/* ============================== */
-/* RESPONSIVE */
-/* ============================== */
-@media (max-width: 768px) {
-
-    :root {
-        --nav-height: 110px;
-    }
-
-    header {
-        padding: 0 20px;
-    }
-
-    nav {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    nav ul {
-        flex-direction: column;
-    }
-
-    .hero h1 {
-        font-size: 36px;
-    }
-
-    .typing-text {
-        font-size: 20px;
-    }
-
-    .about-section,
-    .internship-section,
-    .cert-page,
-    .contact-section,
-    .resume-section {
-        padding: 120px 20px;
-    }
-
-    .about-container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .about-img {
-        width: 200px;
-        height: 280px;
-        margin: auto;
-    }
-
-    .project-card h3 {
-        font-size: 20px;
-        padding: 12px 30px;
-    }
+/* Download Button */
+.download-btn {
+    background: #38bdf8;   
+    color: #ffffff;
+    border: none;
+    margin: 5px;
 }
+
+.download-btn:hover {
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4); 
+    transform: translateY(-3px);
+}
+
 
 @media (max-width: 480px) {
 
